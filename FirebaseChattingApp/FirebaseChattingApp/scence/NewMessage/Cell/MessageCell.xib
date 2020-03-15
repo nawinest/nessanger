@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="message" rowHeight="100" id="KGk-i7-Jjw" customClass="MessageCell" customModule="FirebaseChattingApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o6d-vL-sQA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" translatesAutoresizingMaskIntoConstraints="NO" id="LtU-gS-lnb">
+                                <rect key="frame" x="12" y="17.5" width="65" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="328-Le-VW9"/>
+                                    <constraint firstAttribute="width" constant="65" id="O9q-O9-5Rh"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0uv-gc-Ezs">
+                                <rect key="frame" x="93" y="22.5" width="48" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nawinc.work@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fc9-Ew-pZ0">
+                                <rect key="frame" x="93" y="49.5" width="211" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="260" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGx-C3-OYG">
+                                <rect key="frame" x="304" y="34.5" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Fc9-Ew-pZ0" secondAttribute="trailing" constant="16" id="6Mx-KW-iLe"/>
+                            <constraint firstItem="Fc9-Ew-pZ0" firstAttribute="top" secondItem="0uv-gc-Ezs" secondAttribute="bottom" constant="3" id="GHf-yM-UZi"/>
+                            <constraint firstAttribute="trailing" secondItem="cGx-C3-OYG" secondAttribute="trailing" constant="16" id="RTx-fO-SpX"/>
+                            <constraint firstItem="Fc9-Ew-pZ0" firstAttribute="leading" secondItem="LtU-gS-lnb" secondAttribute="trailing" constant="16" id="Vfz-uf-tSo"/>
+                            <constraint firstItem="LtU-gS-lnb" firstAttribute="leading" secondItem="o6d-vL-sQA" secondAttribute="leading" constant="12" id="VpK-SX-lkM"/>
+                            <constraint firstItem="0uv-gc-Ezs" firstAttribute="leading" secondItem="LtU-gS-lnb" secondAttribute="trailing" constant="16" id="beK-t1-Ysj"/>
+                            <constraint firstAttribute="height" constant="99.5" id="e0b-M3-caf"/>
+                            <constraint firstItem="0uv-gc-Ezs" firstAttribute="top" secondItem="LtU-gS-lnb" secondAttribute="top" constant="5" id="e2D-DS-opJ"/>
+                            <constraint firstItem="cGx-C3-OYG" firstAttribute="centerY" secondItem="0uv-gc-Ezs" secondAttribute="centerY" id="kfm-s5-cDN"/>
+                            <constraint firstItem="cGx-C3-OYG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0uv-gc-Ezs" secondAttribute="trailing" constant="8" id="qG6-QO-nrk"/>
+                            <constraint firstItem="LtU-gS-lnb" firstAttribute="centerY" secondItem="o6d-vL-sQA" secondAttribute="centerY" id="suO-di-Enz"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="o6d-vL-sQA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="CwX-Us-3dU"/>
+                    <constraint firstAttribute="trailing" secondItem="o6d-vL-sQA" secondAttribute="trailing" id="q5N-6a-PIS"/>
+                    <constraint firstItem="o6d-vL-sQA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="s0v-On-nx9"/>
+                    <constraint firstAttribute="bottom" secondItem="o6d-vL-sQA" secondAttribute="bottom" id="uc6-nY-oWd"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="detailText" destination="Fc9-Ew-pZ0" id="WM2-PH-lpN"/>
+                <outlet property="detailView" destination="o6d-vL-sQA" id="gHq-02-HS4"/>
+                <outlet property="imageCell" destination="LtU-gS-lnb" id="OH1-93-1ch"/>
+                <outlet property="name" destination="0uv-gc-Ezs" id="nCy-Y5-wdc"/>
+                <outlet property="timeLabel" destination="cGx-C3-OYG" id="cuM-01-eyD"/>
+            </connections>
+            <point key="canvasLocation" x="47.826086956521742" y="85.714285714285708"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="person" width="1400" height="950"/>
+    </resources>
+</document>
