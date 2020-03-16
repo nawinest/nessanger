@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pre Scence View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="PreScenceViewController" customModule="FirebaseChattingApp" customModuleProvider="___VARIABLE_ibCustomModuleProvider___" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d0n-ty-bAH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ulg-lp-P1u">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="prescence" translatesAutoresizingMaskIntoConstraints="NO" id="ddq-5I-COt">
+                                        <rect key="frame" x="0.0" y="35" width="414" height="280"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="280" id="GMI-A0-sVp"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Jl-5G-2ck">
+                                        <rect key="frame" x="8" y="611.5" width="398" height="57.5"/>
+                                        <string key="text">You need more connection.
+Nessanger for chatting.</string>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This application is created for learning only  doesn't has bout commercial at all." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOw-ca-Yxv">
+                                        <rect key="frame" x="8" y="685" width="398" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCU-TZ-CgR">
+                                        <rect key="frame" x="36" y="774" width="342" height="52"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52" id="OGj-tW-M2z"/>
+                                        </constraints>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ddq-5I-COt" secondAttribute="trailing" id="0le-Cg-Reg"/>
+                                    <constraint firstAttribute="trailing" secondItem="2Jl-5G-2ck" secondAttribute="trailing" constant="8" id="4nQ-Bq-RtF"/>
+                                    <constraint firstItem="2Jl-5G-2ck" firstAttribute="leading" secondItem="Ulg-lp-P1u" secondAttribute="leading" constant="8" id="BgE-aP-k4u"/>
+                                    <constraint firstAttribute="trailing" secondItem="RCU-TZ-CgR" secondAttribute="trailing" constant="36" id="N22-WC-R8P"/>
+                                    <constraint firstItem="ddq-5I-COt" firstAttribute="top" secondItem="Ulg-lp-P1u" secondAttribute="top" constant="35" id="N8r-jB-sjh"/>
+                                    <constraint firstAttribute="bottom" secondItem="RCU-TZ-CgR" secondAttribute="bottom" constant="36" id="TwR-bx-tG3"/>
+                                    <constraint firstItem="ddq-5I-COt" firstAttribute="leading" secondItem="Ulg-lp-P1u" secondAttribute="leading" id="XW5-jx-I0P"/>
+                                    <constraint firstItem="ZOw-ca-Yxv" firstAttribute="leading" secondItem="Ulg-lp-P1u" secondAttribute="leading" constant="8" id="Yhc-Ss-Pcm"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZOw-ca-Yxv" secondAttribute="trailing" constant="8" id="hrf-n0-fjE"/>
+                                    <constraint firstItem="RCU-TZ-CgR" firstAttribute="top" secondItem="ZOw-ca-Yxv" secondAttribute="bottom" constant="60" id="lQT-TQ-AY9"/>
+                                    <constraint firstItem="ZOw-ca-Yxv" firstAttribute="top" secondItem="2Jl-5G-2ck" secondAttribute="bottom" constant="16" id="sv0-Ac-PZ8"/>
+                                    <constraint firstItem="RCU-TZ-CgR" firstAttribute="leading" secondItem="Ulg-lp-P1u" secondAttribute="leading" constant="36" id="zXo-7W-s4U"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ulg-lp-P1u" firstAttribute="leading" secondItem="sON-sF-oiO" secondAttribute="leading" id="4HT-1d-sAI"/>
+                            <constraint firstItem="sON-sF-oiO" firstAttribute="bottom" secondItem="Ulg-lp-P1u" secondAttribute="bottom" id="PcT-PH-X1f"/>
+                            <constraint firstItem="sON-sF-oiO" firstAttribute="trailing" secondItem="Ulg-lp-P1u" secondAttribute="trailing" id="w5K-3o-4ef"/>
+                            <constraint firstItem="Ulg-lp-P1u" firstAttribute="top" secondItem="d0n-ty-bAH" secondAttribute="top" id="x3v-VX-k2H"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sON-sF-oiO"/>
+                    </view>
+                    <connections>
+                        <outlet property="buttonNext" destination="RCU-TZ-CgR" id="h8A-eW-v11"/>
+                        <outlet property="descriptionLabel" destination="ZOw-ca-Yxv" id="H6M-Vj-e1h"/>
+                        <outlet property="mainView" destination="Ulg-lp-P1u" id="maN-sM-lu3"/>
+                        <outlet property="titleLabel" destination="2Jl-5G-2ck" id="RT8-i4-CbW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="81.696428571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="prescence" width="4724" height="2657"/>
+    </resources>
+</document>

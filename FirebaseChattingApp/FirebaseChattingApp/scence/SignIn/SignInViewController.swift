@@ -22,6 +22,8 @@ class SignInViewController: UIViewController {
     lazy var profileImageView: UIImageView = {
         let image = UIImageView()
         image.image = #imageLiteral(resourceName: "person")
+        image.layer.cornerRadius = 16
+        image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
         image.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectImage)))
         image.isUserInteractionEnabled = true
@@ -74,7 +76,7 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.init(r: 61, g: 91, b: 151)
+        self.view.backgroundColor = .white
         view.addSubview(inputContainer)
         view.addSubview(loginRegisterButton)
         self.setupInputContainterView()
@@ -84,6 +86,7 @@ class SignInViewController: UIViewController {
     }
     
     var inputContainerHeightAnchor: NSLayoutConstraint?
+    
     
     func setupInputContainterView() {
         inputContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true

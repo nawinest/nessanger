@@ -11,16 +11,22 @@ import Firebase
 
 class ViewController: UIViewController {
     @IBOutlet weak var mainTableView: UITableView!
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var nameProfileLabel: UILabel!
+    @IBOutlet weak var decription: UILabel!
+    @IBOutlet weak var viewTableWrapper: UIView!
+    @IBOutlet weak var viewContainer: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItem  = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
+        self.mainTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         self.mainTableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "message")
         let image = UIImage(named: "outline_chat")
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(handleNewMessage))
-        
+        self.setupView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,11 +58,7 @@ class ViewController: UIViewController {
         let messageRef = Database.database().reference().child("messages").child(messageId)
         messageRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject] {
-                let message = Message(fromId: (dictionary["fromId"] as! String),
-                                      toId: (dictionary["toId"] as! String),
-                                      timstamp: dictionary["timeStamp"] as? NSNumber,
-                                      text: (dictionary["text"] as? String ?? ""),
-                                      imageUrl: (dictionary["imageUrl"] as? String ?? ""))
+                let message = Message(dictionary: dictionary)
                 if let toId = message.toId {
                     self.messagesList[toId] = message
                     self.messages = Array(self.messagesList.values)
@@ -70,28 +72,6 @@ class ViewController: UIViewController {
             }
         })
     }
-//    func observerMessage() {
-//        let ref = Database.database().reference().child("messages")
-//        ref.observe(.childAdded, with: { (snapshot) in
-//            if let dictionary = snapshot.value as? [String: AnyObject] {
-//                let message = Message(fromId: (dictionary["fromId"] as! String), toId: (dictionary["toId"] as! String), timstamp: dictionary["timeStamp"] as? NSNumber, text: (dictionary["text"] as! String))
-//
-//                if let toId = message.toId {
-//                    self.messagesList[toId] = message
-//                    self.messages = Array(self.messagesList.values)
-//                    self.messages.sort(by: { (message1, message2) -> Bool in
-//                        return message1.timstamp!.intValue > message2.timstamp!.intValue
-//                    })
-//                }
-//
-//                DispatchQueue.main.async {
-//                    self.mainTableView.reloadData()
-//                }
-//            }
-//        }) { (err) in
-//
-//        }
-//    }
     
     func checkIsUserLoggedIn() {
         if Auth.auth().currentUser?.uid == nil {
@@ -102,49 +82,63 @@ class ViewController: UIViewController {
                 print(snapshot.value ?? "")
                 guard let dictionary = snapshot.value as? [String: Any] else { return }
                 let user = UserModel(id: snapshot.key, email: (dictionary["email"] as! String), name: (dictionary["name"] as! String), profileImageUrl: (dictionary["profileImageUrl"] as! String))
-                self.setupNavsBarWithUser(user: user)
+                self.setupProfileUser(user: user)
             }) { (err) in
                 print("Failed to fetch user:", err)
             }
         }
     }
     
-    func setupNavsBarWithUser(user: UserModel) {
+    func setupView() {
+        self.profileImage.layer.cornerRadius = 8
+        self.viewTableWrapper.roundCorners(corners: [.topLeft, .topRight], radius: 16.0)
+        self.profileImage.layer.masksToBounds = true
+        self.viewTableWrapper.clipsToBounds = true
+        self.viewContainer.backgroundColor = UIColor.init(r: 23, g: 44, b: 87)
+    }
+    
+    func setupProfileUser(user: UserModel) {
         self.messagesList.removeAll()
         self.messages.removeAll()
         self.mainTableView.reloadData()
-        let titleView = UIView()
-        let profileImageView = UIImageView()
         if let urlImage = user.profileImageUrl {
-            profileImageView.loadImageFromCache(urlImageString: urlImage)
+            self.profileImage.loadImageFromCache(urlImageString: urlImage)
+            self.nameProfileLabel.text = user.name ?? ""
         }
         
-        let containerView = UIView()
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        titleView.addSubview(containerView)
         
-        containerView.addSubview(profileImageView)
-        profileImageView.translatesAutoresizingMaskIntoConstraints = false
-        profileImageView.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 0).isActive = true
-        profileImageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
-        profileImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        profileImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        profileImageView.layer.cornerRadius = 20
-        profileImageView.contentMode = .scaleAspectFill
-        profileImageView.clipsToBounds = true
-        
-        let nameLabel = UILabel()
-        nameLabel.text = user.name ?? ""
-        containerView.addSubview(nameLabel)
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 4).isActive = true
-        nameLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -4).isActive = true
-        nameLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
-        
-        containerView.centerXAnchor.constraint(equalTo: titleView.centerXAnchor).isActive = true
-        containerView.centerYAnchor.constraint(equalTo: titleView.centerYAnchor).isActive = true
-        
-        self.navigationItem.titleView = titleView
+//        let titleView = UIView()
+//        let profileImageView = UIImageView()
+//        if let urlImage = user.profileImageUrl {
+//            profileImageView.loadImageFromCache(urlImageString: urlImage)
+//        }
+//
+//        let containerView = UIView()
+//        containerView.translatesAutoresizingMaskIntoConstraints = false
+//        titleView.addSubview(containerView)
+//
+//        containerView.addSubview(profileImageView)
+//        profileImageView.translatesAutoresizingMaskIntoConstraints = false
+//        profileImageView.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 0).isActive = true
+//        profileImageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+//        profileImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
+//        profileImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+//        profileImageView.layer.cornerRadius = 20
+//        profileImageView.contentMode = .scaleAspectFill
+//        profileImageView.clipsToBounds = true
+//
+//        let nameLabel = UILabel()
+//        nameLabel.text = user.name ?? ""
+//        containerView.addSubview(nameLabel)
+//        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+//        nameLabel.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 4).isActive = true
+//        nameLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -4).isActive = true
+//        nameLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+//
+//        containerView.centerXAnchor.constraint(equalTo: titleView.centerXAnchor).isActive = true
+//        containerView.centerYAnchor.constraint(equalTo: titleView.centerYAnchor).isActive = true
+//
+//        self.navigationItem.titleView = titleView
         
     }
     
@@ -208,3 +202,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
+extension UIView {
+   func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
+    }
+}

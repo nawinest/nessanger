@@ -14,7 +14,6 @@ class ChatCell: UICollectionViewCell {
     
     lazy var titleLabel: UITextView = {
         let tv = UITextView()
-        tv.text = "ทดสอบข้อความ"
         tv.font = UIFont.systemFont(ofSize: 16.0)
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.backgroundColor = .clear
@@ -42,6 +41,15 @@ class ChatCell: UICollectionViewCell {
         return imageView
     }()
     
+    lazy var messageImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.cornerRadius = 16
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setupView()
@@ -59,6 +67,13 @@ class ChatCell: UICollectionViewCell {
         self.detailView.addSubview(bubbleView)
         self.detailView.addSubview(titleLabel)
         self.detailView.addSubview(profileImageView)
+        
+        bubbleView.addSubview(messageImageView)
+        messageImageView.leftAnchor.constraint(equalTo: bubbleView.leftAnchor, constant: 0).isActive = true
+        messageImageView.topAnchor.constraint(equalTo: bubbleView.topAnchor, constant: 0).isActive = true
+        messageImageView.widthAnchor.constraint(equalTo: bubbleView.widthAnchor).isActive = true
+        messageImageView.heightAnchor.constraint(equalTo: bubbleView.heightAnchor).isActive = true
+        
         bubbleView.topAnchor.constraint(equalTo: detailView.topAnchor, constant: 0).isActive = true
         bubbleView.heightAnchor.constraint(equalTo: detailView.heightAnchor).isActive = true
         bubbleRightAnchor = bubbleView.rightAnchor.constraint(equalTo: detailView.rightAnchor, constant: -8)

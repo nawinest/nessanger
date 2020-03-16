@@ -52,23 +52,26 @@ extension ChatLogViewController: UIImagePickerControllerDelegate, UINavigationCo
                 guard let messageImageUrl = downloadURL?.absoluteString else { return }
                 
                 print("Successfully uploaded message image:", messageImageUrl)
-                self.sendMessageWithImage(messageImageUrl)
+                self.sendMessageWithImage(messageImageUrl, image: selected)
                 
             })
         })
     }
     
-    private func sendMessageWithImage(_ imageUrl: String) {
+    private func sendMessageWithImage(_ imageUrl: String, image: UIImage) {
         let ref = Database.database().reference().child("messages")
         let childRef = ref.childByAutoId()
         let toId = user!.id
         let fromId = Auth.auth().currentUser?.uid
         let timeStamp = Int(Date().timeIntervalSince1970)
         let value = [
-            "imageUrl": imageUrl,
             "toId": toId!,
             "fromId": fromId!,
-            "timeStamp": timeStamp] as [String : Any]
+            "timeStamp": timeStamp,
+            "imageUrl": imageUrl,
+            "msgImageWidth": image.size.width,
+            "msgImageHeight": image.size.height
+            ] as [String : Any]
         childRef.updateChildValues(value) { (error, ref) in
             if error != nil {
                 return

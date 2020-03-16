@@ -21,6 +21,7 @@ class NewMessageViewController: UIViewController {
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
         self.mainTableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: cellID)
+        self.mainTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
     
     override func viewWillAppear(_ animated: Bool) {

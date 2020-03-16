@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6kr-gi-NJ5">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6kr-gi-NJ5">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FirebaseChattingApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="FirebaseChattingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,17 +19,69 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LaW-jh-hPg">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="84m-zD-GHG">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </tableView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poy" translatesAutoresizingMaskIntoConstraints="NO" id="zCJ-Fd-ege">
+                                        <rect key="frame" x="24" y="24" width="138" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="138" id="8ke-j6-hHO"/>
+                                            <constraint firstAttribute="height" constant="128" id="o8g-bB-fU1"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eNa-Lr-TDm">
+                                        <rect key="frame" x="170" y="49" width="236" height="78.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWY-CQ-Jib">
+                                                <rect key="frame" x="8" y="8" width="220" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <color key="textColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gy-Pb-ydA">
+                                                <rect key="frame" x="8" y="44" width="220" height="26.5"/>
+                                                <string key="text">Chat app practice with firebase maybe
+ have some bugs :(</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                <color key="textColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="3gy-Pb-ydA" secondAttribute="trailing" constant="8" id="0Nn-gp-5pY"/>
+                                            <constraint firstAttribute="bottom" secondItem="3gy-Pb-ydA" secondAttribute="bottom" constant="8" id="2xl-q3-Oak"/>
+                                            <constraint firstItem="3gy-Pb-ydA" firstAttribute="leading" secondItem="eNa-Lr-TDm" secondAttribute="leading" constant="8" id="32d-VB-OmO"/>
+                                            <constraint firstItem="QWY-CQ-Jib" firstAttribute="leading" secondItem="eNa-Lr-TDm" secondAttribute="leading" constant="8" id="4cp-5H-qxn"/>
+                                            <constraint firstItem="QWY-CQ-Jib" firstAttribute="top" secondItem="eNa-Lr-TDm" secondAttribute="top" constant="8" id="Ema-hu-1yQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="QWY-CQ-Jib" secondAttribute="trailing" constant="8" id="MGU-Ee-f1v"/>
+                                            <constraint firstItem="3gy-Pb-ydA" firstAttribute="top" secondItem="QWY-CQ-Jib" secondAttribute="bottom" constant="2" id="aXY-hF-7bY"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cf6-ne-1vh">
+                                        <rect key="frame" x="0.0" y="176" width="414" height="598"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="84m-zD-GHG">
+                                                <rect key="frame" x="0.0" y="16" width="414" height="582"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </tableView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="84m-zD-GHG" firstAttribute="leading" secondItem="Cf6-ne-1vh" secondAttribute="leading" id="6Kn-Wf-jPe"/>
+                                            <constraint firstItem="84m-zD-GHG" firstAttribute="top" secondItem="Cf6-ne-1vh" secondAttribute="top" constant="16" id="Xog-23-3ve"/>
+                                            <constraint firstAttribute="trailing" secondItem="84m-zD-GHG" secondAttribute="trailing" id="Z3i-zV-Vd9"/>
+                                            <constraint firstAttribute="bottom" secondItem="84m-zD-GHG" secondAttribute="bottom" id="ePH-rl-lE7"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="84m-zD-GHG" firstAttribute="leading" secondItem="LaW-jh-hPg" secondAttribute="leading" id="9dH-dh-B1p"/>
-                                    <constraint firstAttribute="trailing" secondItem="84m-zD-GHG" secondAttribute="trailing" id="Cdz-uA-lTj"/>
-                                    <constraint firstAttribute="bottom" secondItem="84m-zD-GHG" secondAttribute="bottom" id="KGP-GY-5u1"/>
-                                    <constraint firstItem="84m-zD-GHG" firstAttribute="top" secondItem="LaW-jh-hPg" secondAttribute="top" id="jnx-p3-4yM"/>
+                                    <constraint firstItem="zCJ-Fd-ege" firstAttribute="leading" secondItem="LaW-jh-hPg" secondAttribute="leading" constant="24" id="0cm-eo-78G"/>
+                                    <constraint firstItem="Cf6-ne-1vh" firstAttribute="top" secondItem="zCJ-Fd-ege" secondAttribute="bottom" constant="24" id="97f-WB-j4G"/>
+                                    <constraint firstItem="eNa-Lr-TDm" firstAttribute="leading" secondItem="zCJ-Fd-ege" secondAttribute="trailing" constant="8" id="Amp-eV-z8E"/>
+                                    <constraint firstAttribute="trailing" secondItem="Cf6-ne-1vh" secondAttribute="trailing" id="duh-ga-7sV"/>
+                                    <constraint firstItem="eNa-Lr-TDm" firstAttribute="centerY" secondItem="zCJ-Fd-ege" secondAttribute="centerY" id="fIg-Dz-Vsz"/>
+                                    <constraint firstAttribute="trailing" secondItem="eNa-Lr-TDm" secondAttribute="trailing" constant="8" id="hAM-uh-fVa"/>
+                                    <constraint firstItem="Cf6-ne-1vh" firstAttribute="leading" secondItem="LaW-jh-hPg" secondAttribute="leading" id="oZU-12-njE"/>
+                                    <constraint firstAttribute="bottom" secondItem="Cf6-ne-1vh" secondAttribute="bottom" id="qZo-M6-eeW"/>
+                                    <constraint firstItem="zCJ-Fd-ege" firstAttribute="top" secondItem="LaW-jh-hPg" secondAttribute="top" constant="24" id="zXo-sp-LIN"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -46,12 +96,17 @@
                     </view>
                     <navigationItem key="navigationItem" id="kq5-4Z-pOh"/>
                     <connections>
+                        <outlet property="decription" destination="3gy-Pb-ydA" id="ZTd-5A-GNY"/>
                         <outlet property="mainTableView" destination="84m-zD-GHG" id="iUW-dA-erF"/>
+                        <outlet property="nameProfileLabel" destination="QWY-CQ-Jib" id="CGC-SU-aIq"/>
+                        <outlet property="profileImage" destination="zCJ-Fd-ege" id="6pQ-QT-wW0"/>
+                        <outlet property="viewContainer" destination="LaW-jh-hPg" id="LgY-Do-Sxp"/>
+                        <outlet property="viewTableWrapper" destination="Cf6-ne-1vh" id="rya-1l-RAV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="129.91071428571428"/>
+            <point key="canvasLocation" x="931.88405797101461" y="774.77678571428567"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Nb9-ya-2Us">
@@ -72,4 +127,7 @@
             <point key="canvasLocation" x="137.68115942028987" y="774.77678571428567"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="poy" width="992" height="558"/>
+    </resources>
 </document>

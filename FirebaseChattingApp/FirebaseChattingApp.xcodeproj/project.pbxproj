@@ -16,6 +16,9 @@
 		8A004A1824092A1300A56DA0 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A004A1624092A1300A56DA0 /* ChatCell.swift */; };
 		8A004A1924092A1300A56DA0 /* ChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A004A1724092A1300A56DA0 /* ChatCell.xib */; };
 		8A004A1D240CB73700A56DA0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A004A1C240CB73600A56DA0 /* GoogleService-Info.plist */; };
+		8A254954241F70A40090DB46 /* PreScenceStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A25494B241F70A40090DB46 /* PreScenceStoryboard.storyboard */; };
+		8A254959241F70A40090DB46 /* PreScenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A254950241F70A40090DB46 /* PreScenceViewController.swift */; };
+		8A25495E241F79060090DB46 /* Ex+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A25495D241F79060090DB46 /* Ex+Color.swift */; };
 		8A70C5F524064A8D003E1734 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A70C5F424064A8D003E1734 /* AppDelegate.swift */; };
 		8A70C5F724064A8D003E1734 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A70C5F624064A8D003E1734 /* ViewController.swift */; };
 		8A70C5FA24064A8D003E1734 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A70C5F824064A8D003E1734 /* Main.storyboard */; };
@@ -65,6 +68,9 @@
 		8A004A1624092A1300A56DA0 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		8A004A1724092A1300A56DA0 /* ChatCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatCell.xib; sourceTree = "<group>"; };
 		8A004A1C240CB73600A56DA0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8A25494B241F70A40090DB46 /* PreScenceStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PreScenceStoryboard.storyboard; sourceTree = "<group>"; };
+		8A254950241F70A40090DB46 /* PreScenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreScenceViewController.swift; sourceTree = "<group>"; };
+		8A25495D241F79060090DB46 /* Ex+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+Color.swift"; sourceTree = "<group>"; };
 		8A70C5F124064A8D003E1734 /* FirebaseChattingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebaseChattingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A70C5F424064A8D003E1734 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A70C5F624064A8D003E1734 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -157,9 +163,19 @@
 			path = cell;
 			sourceTree = "<group>";
 		};
+		8A25494A241F708D0090DB46 /* Prescence */ = {
+			isa = PBXGroup;
+			children = (
+				8A25494B241F70A40090DB46 /* PreScenceStoryboard.storyboard */,
+				8A254950241F70A40090DB46 /* PreScenceViewController.swift */,
+			);
+			path = Prescence;
+			sourceTree = "<group>";
+		};
 		8A70C5E824064A8D003E1734 = {
 			isa = PBXGroup;
 			children = (
+				8A25495D241F79060090DB46 /* Ex+Color.swift */,
 				8A70C5F324064A8D003E1734 /* FirebaseChattingApp */,
 				8A70C60824064A90003E1734 /* FirebaseChattingAppTests */,
 				8A70C61324064A90003E1734 /* FirebaseChattingAppUITests */,
@@ -217,6 +233,7 @@
 		8A70C62224064CA0003E1734 /* scence */ = {
 			isa = PBXGroup;
 			children = (
+				8A25494A241F708D0090DB46 /* Prescence */,
 				8A0049FA24079F0B00A56DA0 /* ChatLogsController */,
 				8A70C63B240679EE003E1734 /* NewMessage */,
 				8A70C62324064CA9003E1734 /* SignIn */,
@@ -391,6 +408,7 @@
 				8A70C5FA24064A8D003E1734 /* Main.storyboard in Resources */,
 				8A70C64524067A07003E1734 /* NewMessageStoryboard.storyboard in Resources */,
 				8A70C65224067BAC003E1734 /* MessageCell.xib in Resources */,
+				8A254954241F70A40090DB46 /* PreScenceStoryboard.storyboard in Resources */,
 				8A004A0424079F1D00A56DA0 /* ChatLogStoryboard.storyboard in Resources */,
 				8A004A1924092A1300A56DA0 /* ChatCell.xib in Resources */,
 				8A70C62D24064CBE003E1734 /* SignInStoryboard.storyboard in Resources */,
@@ -519,6 +537,7 @@
 			files = (
 				8A70C63224064CBE003E1734 /* SignInViewController.swift in Sources */,
 				8A70C656240686EA003E1734 /* SignIn+handler.swift in Sources */,
+				8A254959241F70A40090DB46 /* PreScenceViewController.swift in Sources */,
 				8A004A1824092A1300A56DA0 /* ChatCell.swift in Sources */,
 				8AD92C11241B90BC0076E67F /* Chatlog+Handler.swift in Sources */,
 				8A70C65124067BAC003E1734 /* MessageCell.swift in Sources */,
@@ -526,6 +545,7 @@
 				8A70C5F724064A8D003E1734 /* ViewController.swift in Sources */,
 				8A70C5F524064A8D003E1734 /* AppDelegate.swift in Sources */,
 				8A70C65424067E8F003E1734 /* UserModel.swift in Sources */,
+				8A25495E241F79060090DB46 /* Ex+Color.swift in Sources */,
 				8A004A0F2408D76900A56DA0 /* Message.swift in Sources */,
 				8A70C64A24067A07003E1734 /* NewMessageViewController.swift in Sources */,
 				8A0049F9240791C700A56DA0 /* Extension.swift in Sources */,

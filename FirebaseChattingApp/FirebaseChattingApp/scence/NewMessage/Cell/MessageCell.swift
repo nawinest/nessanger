@@ -13,6 +13,7 @@ class MessageCell: UITableViewCell {
     @IBOutlet weak var detailText: UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var imageCell: UIImageView!
+    @IBOutlet weak var detailParentView: UIView!
     @IBOutlet weak var detailView: UIView!
     @IBOutlet weak var timeLabel: UILabel!
     
@@ -44,8 +45,18 @@ class MessageCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        setupImageCell()
+    }
+    
+    func setupImageCell() {
         self.imageCell.clipsToBounds = true
-        self.imageCell.layer.cornerRadius = imageCell.frame.width / 2
+        self.imageCell.layer.cornerRadius = 8
+        self.imageCell.clipsToBounds = true
+        self.imageCell.layer.shadowColor = UIColor.init(r: 23, g: 44, b: 87).cgColor
+        self.imageCell.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+        self.imageCell.layer.shadowOpacity = 0.9
+        self.imageCell.layer.shadowRadius = 8
+        self.imageCell.layer.masksToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

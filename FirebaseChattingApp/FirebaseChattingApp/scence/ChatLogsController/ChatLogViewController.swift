@@ -80,6 +80,7 @@ class ChatLogViewController: UIViewController {
     lazy var inputContainerView: UIView = {
         let containerView = UIView()
         containerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50)
+        containerView.backgroundColor = .white
        
         let uploadImage = UIImageView()
         uploadImage.image = UIImage(named: "imagePicker")
@@ -150,19 +151,16 @@ class ChatLogViewController: UIViewController {
             messageRef.observe(.value, with: { (snapShotInside) in
                 guard let dictionary = snapShotInside.value as? [String: AnyObject] else {return}
                 
-                let message = Message(fromId: (dictionary["fromId"] as! String),
-                                      toId: (dictionary["toId"] as! String),
-                                      timstamp: dictionary["timeStamp"] as? NSNumber,
-                                      text: (dictionary["text"] as? String ?? ""),
-                                      imageUrl: (dictionary["imageUrl"] as? String ?? ""))
+                let message = Message(dictionary: dictionary)
                 
                 self.messages.append(message)
+                let lastIdx = IndexPath(row: self.messages.count - 1, section: 0)
                 DispatchQueue.main.async {
                     self.mainCollectionView.reloadData()
+                    self.mainCollectionView.scrollToItem(at: lastIdx, at: .top, animated: true)
                 }
             }, withCancel: nil)
         }, withCancel: nil)
-        
     }
     
    
@@ -208,12 +206,14 @@ extension ChatLogViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "chatCell", for: indexPath) as! ChatCell
-    
         if let text = self.messages[indexPath.row].text {
             cell.titleLabel.text = text
-            setupCell(cell: cell, message: self.messages[indexPath.row])
             cell.bubbleWidthAnchor?.constant = estimateFrameForText(text: text).width + 32
+        } else {
+            cell.titleLabel.text = nil
         }
+        
+        setupCell(cell: cell, message: self.messages[indexPath.row])
         
         return cell
     }
@@ -221,7 +221,11 @@ extension ChatLogViewController: UICollectionViewDelegate, UICollectionViewDataS
     func setupCell(cell: ChatCell, message: Message) {
         if let urlImagePath = user?.profileImageUrl {
             cell.profileImageView.loadImageFromCache(urlImageString: urlImagePath)
+        } else {
+            cell.profileImageView.image = nil
         }
+        
+       
         if message.fromId == Auth.auth().currentUser?.uid {
             cell.bubbleView.backgroundColor = ChatCell.blue
             cell.titleLabel.textColor = .white
@@ -235,12 +239,23 @@ extension ChatLogViewController: UICollectionViewDelegate, UICollectionViewDataS
             cell.bubbleRightAnchor?.isActive = false
             cell.bubbleLeftAnchor?.isActive = true
         }
+        
+        if let msgImageUrl = message.imageUrl {
+            cell.messageImageView.loadImageFromCache(urlImageString: msgImageUrl)
+            cell.bubbleView.backgroundColor = .clear
+        } else {
+            cell.messageImageView.image = nil
+        }
+               
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var height: CGFloat = 80
         if let text = self.messages[indexPath.row].text {
             height = estimateFrameForText(text: text).height + 20
+        } else if let imageWidth = self.messages[indexPath.row].msgImageWidth?.floatValue,
+                let imageHeight = self.messages[indexPath.row].msgImageHeight?.floatValue {
+            height = CGFloat(imageHeight / imageWidth * 200)
         }
         return CGSize(width: self.mainCollectionView.frame.width, height: height)
     }
